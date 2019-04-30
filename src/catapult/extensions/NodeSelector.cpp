@@ -130,7 +130,6 @@ namespace catapult { namespace extensions {
 		if (WeightPolicy::Importance == weightPolicy) {
 			// the weight of a supernode should be 10'000; a supernode has ~0.0333% importance
 			auto descriptor = importanceSupplier();
-				std::cout << "descriptor:" << descriptor<< std::endl;
 			auto rawWeight = static_cast<uint32_t>(descriptor.Importance.unwrap() * 30'000'000 / descriptor.TotalChainImportance.unwrap());
 			return std::max<uint32_t>({ 500, std::min<uint32_t>({ 10'000, rawWeight }) });
 		} else {
