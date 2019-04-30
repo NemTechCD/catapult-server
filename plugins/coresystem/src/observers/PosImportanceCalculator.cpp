@@ -46,7 +46,7 @@ namespace catapult { namespace observers {
 				auto highValueAddresses = cache.highValueAddresses();
 				std::vector<state::AccountState*> highValueAccounts;
 				highValueAccounts.reserve(highValueAddresses.size());
-				std::cout << "highValueAddresses:" << highValueAddresses << std::endl;
+
 				// 2. calculate sum
 				Amount activeHarvestingMosaics;
 				for (const auto& address : highValueAddresses) {
@@ -55,7 +55,7 @@ namespace catapult { namespace observers {
 					highValueAccounts.push_back(&accountState);
 					activeHarvestingMosaics = activeHarvestingMosaics + accountState.Balances.get(m_harvestingMosaicId);
 				}
-				std::cout << "activeHarvestingMosaics:" << activeHarvestingMosaics << std::endl;
+
 				// 3. update accounts
 				for (auto* pAccountState : highValueAccounts) {
 					boost::multiprecision::uint128_t importance = m_totalChainImportance.unwrap();
