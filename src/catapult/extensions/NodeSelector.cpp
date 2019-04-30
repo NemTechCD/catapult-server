@@ -78,7 +78,7 @@ namespace catapult { namespace extensions {
 					nodesInfo.TotalCandidateWeight += nodesInfo.Candidates.back().Weight;
 				}
 			});
-
+				std::cout << "nodesInfo:" << nodesInfo << std::endl;
 			return nodesInfo;
 		}
 
@@ -124,6 +124,10 @@ namespace catapult { namespace extensions {
 			const ionet::NodeInteractions& interactions,
 			WeightPolicy weightPolicy,
 			const supplier<ImportanceDescriptor>& importanceSupplier) {
+				std::cout << "interactions:" << interactions << std::endl;
+				std::cout << "weightPolicy:" << weightPolicy << std::endl;
+				std::cout << "WeightPolicy::Importance:" << WeightPolicy::Importance << std::endl;
+				std::cout << "importanceSupplier:" << importanceSupplier() << std::endl;
 		// return a weight in range of 1..10'000
 		if (WeightPolicy::Importance == weightPolicy) {
 			// the weight of a supernode should be 10'000; a supernode has ~0.0333% importance
